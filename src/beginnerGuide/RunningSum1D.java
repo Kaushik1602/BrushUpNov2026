@@ -10,7 +10,7 @@ public class RunningSum1D {
     }
 
     public static int[] runningSum(int[] nums) {
-        int[] numsSum = new int[nums.length];
+        /*int[] numsSum = new int[nums.length];
         int sum = 0;
         int i = 0;
         for (int num:nums){
@@ -18,7 +18,12 @@ public class RunningSum1D {
             numsSum[i]=sum;
             i++;
         }
-        return numsSum;
+        return numsSum;*/
+
+        for(int i=1; i<nums.length;i++){
+            nums[i]+=nums[i-1];
+        }
+        return nums;
     }
 
 }
