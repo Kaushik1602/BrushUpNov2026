@@ -6,7 +6,7 @@ import java.util.Map;
 public class RansomNote {
 
     static void main(String[] args) {
-        System.out.println(canConstruct("a","b"));
+        System.out.println(canConstructOptimised("abcb","babbcd"));
     }
 
     public static boolean canConstruct(String ransomNote, String magazine) {
@@ -28,6 +28,16 @@ public class RansomNote {
             }
         }
         return result;
+    }
+
+    public static boolean canConstructOptimised(String ransomNote, String magazine) {
+        int[] alphabet = new int[26];
+        for (char c : ransomNote.toCharArray()) {
+            int i = magazine.indexOf(c, alphabet[c % 26]);
+            if (i == -1) return false;
+            alphabet[c % 26] = i + 1;
+        }
+        return true;
     }
 
 }
